@@ -10,7 +10,6 @@ FIXTURES_DIR = Path(__file__).parent / "fixtures"
 SAMPLE_TXT = str(FIXTURES_DIR / "sample.txt")
 
 
-
 def test_extract_input_default_output_format() -> None:
     """Default output_format is markdown."""
     schema = ExtractInput(file_path=SAMPLE_TXT)
@@ -35,12 +34,10 @@ def test_extract_input_invalid_format_rejected() -> None:
         ExtractInput(file_path=SAMPLE_TXT, output_format="djot")  # type: ignore[arg-type]
 
 
-
 def test_metadata_input_file_path_required() -> None:
     """file_path is required."""
     with pytest.raises(Exception):  # noqa: B017, PT011
         MetadataInput()  # type: ignore[call-arg]
-
 
 
 def test_extract_tool_name() -> None:
@@ -103,7 +100,6 @@ def test_extract_tool_file_not_found() -> None:
     tool = KreuzbergExtractTool()
     with pytest.raises(OSError, match="does not exist"):
         tool._run(file_path="/nonexistent/path/missing.pdf")
-
 
 
 def test_metadata_tool_name() -> None:
