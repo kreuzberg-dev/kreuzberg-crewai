@@ -1,0 +1,98 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = [ "hatchling" ]
+
+[project]
+name = "kreuzberg-crewai"
+version = "0.1.0"
+description = "Kreuzberg document extraction tool for CrewAI agents"
+readme = "README.md"
+keywords = [
+  "ai",
+  "crewai",
+  "document-extraction",
+  "kreuzberg",
+  "ocr",
+  "pdf",
+  "text-extraction",
+]
+license = "MIT"
+maintainers = [
+  { name = "Na'aman Hirschfeld", email = "naaman@kreuzberg.dev" },
+  { name = "Varun Tandon", email = "varun@kreuzberg.dev" },
+]
+authors = [
+  { name = "Kreuzberg.dev", email = "contact@kreuzberg.dev" },
+]
+requires-python = ">=3.10"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Text Processing :: General",
+  "Typing :: Typed",
+]
+dependencies = [
+  "crewai>=1",
+  "kreuzberg>=4.4.6",
+]
+urls.Changelog = "https://github.com/kreuzberg-dev/kreuzberg-crewai/blob/main/CHANGELOG.md"
+urls.Homepage = "https://github.com/kreuzberg-dev/kreuzberg-crewai"
+urls.Kreuzberg = "https://github.com/kreuzberg-dev/kreuzberg"
+urls.Repository = "https://github.com/kreuzberg-dev/kreuzberg-crewai"
+
+[dependency-groups]
+dev = [
+  "mypy>=1.19",
+  "pre-commit>=4",
+  "pytest>=9",
+  "pytest-cov>=6",
+  "ruff>=0.14",
+]
+
+[tool.hatch]
+build.targets.sdist.include = [
+  "src/kreuzberg_crewai",
+  "CHANGELOG.md",
+  "LICENSE",
+  "README.md",
+  "pyproject.toml",
+]
+build.targets.wheel.packages = [ "src/kreuzberg_crewai" ]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+lint.select = [ "ALL" ]
+lint.ignore = [ "ANN401", "COM812", "D100", "D104", "D107", "D203", "D213", "ISC001", "PLR0913" ]
+lint.per-file-ignores."tests/**" = [
+  "ANN",
+  "D",
+  "PLC0415",
+  "PLR2004",
+  "RUF043",
+  "S101",
+  "S108",
+  "SLF001",
+  "TC001",
+  "TC003",
+]
+
+[tool.pytest]
+ini_options.testpaths = [ "tests" ]
+
+[tool.coverage]
+run.source = [ "kreuzberg_crewai" ]
+report.fail_under = 80
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
