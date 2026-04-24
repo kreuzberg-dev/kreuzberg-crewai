@@ -6,7 +6,7 @@ name = 'kreuzberg-crewai'
 description = 'CrewAI tool integration for kreuzberg document extraction'
 gitignore = true
 presets = ['claude', 'codex', 'copilot', 'cursor', 'antigravity']
-builtins = ['python', 'security', 'git-workflow', 'code-quality', 'testing', 'token-efficiency', 'default-commands']
+builtins = ['python', 'default-commands']
 
 [[includes]]
 name = 'kreuzberg-core'
