@@ -5,7 +5,7 @@ exclude: ^dist/
 
 repos:
   - repo: https://github.com/Goldziher/ai-rulez
-    rev: v3.14.2
+    rev: v4.1.6
     hooks:
       - id: ai-rulez-generate
 
@@ -30,30 +30,25 @@ repos:
       - id: check-case-conflict
 
   - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: v2.21.1
+    rev: v2.21.2
     hooks:
       - id: pyproject-fmt
 
-  - repo: https://github.com/ComPWA/taplo-pre-commit
-    rev: v0.9.3
-    hooks:
-      - id: taplo-format
-        exclude: "pyproject.toml"
-
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.11
+    rev: v0.15.12
     hooks:
       - id: ruff
         args: [--fix]
       - id: ruff-format
 
   - repo: https://github.com/kreuzberg-dev/pre-commit-hooks
-    rev: v0.1.0
+    rev: v1.0.0
     hooks:
       - id: mypy
         args: ["--strict", "src"]
         exclude: "^(examples|tests|benchmarks|e2e)/"
 
+      - id: oxfmt
   - repo: https://github.com/rhysd/actionlint
     rev: v1.7.12
     hooks:
